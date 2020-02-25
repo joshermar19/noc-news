@@ -22,7 +22,7 @@ def new_handover(pfx):
     print('Job completed')
 
 
-def update_handover(preface):
+def update_handover(preface=''):
     if not current_ticket:  # In case there is no current_ticket yet
         return
 

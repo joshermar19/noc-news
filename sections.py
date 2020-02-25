@@ -25,7 +25,7 @@ class Section():
         self.message_if_none = message_if_none
         self.show_count = show_count
 
-        print('Section created')
+        print(f'Instantiated "{heading}"')
 
     def get_section(self, for_slack=False, max_len=85):
         title_count = f' ({len(self.line_items)})' if self.show_count else ''
@@ -60,7 +60,7 @@ class SecFromJira(Section):
         def _check_due(issue):
             # Basic sanity check. If it's not set, don't try to parse it
             if not issue.fields.duedate:
-                return None
+                return 'UNSET'
             if datetime.strptime(issue.fields.duedate, '%Y-%m-%d').date() == today:
                 return 'TODAY'
             else:
@@ -79,7 +79,7 @@ class SecFromJira(Section):
         if only_followup:
             issues = followup.filter_followup(issues)
 
-        print(f'Gathering line items for "{heading}"')
+        # print(f'Gathering line items for "{heading}"')
         line_items = []
 
         for issue in issues:
@@ -108,7 +108,7 @@ class SecFromSlack(Section):
 
     def __init__(self, heading, line_fmt, archived=False, **kwargs):
 
-        print(f'Gathering line items for "{heading}"')
+        # print(f'Gathering line items for "{heading}"')
         line_items = []
 
         for channel in slack_interface.get_channels(archived):

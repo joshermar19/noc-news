@@ -2,7 +2,8 @@ from pytz import timezone
 import os
 
 
-DEBUG = False  # "True" uses NP jira project and DEV slack whook
+# "True" uses NP jira project and DEV slack whook 
+DEBUG = True 
 
 TZ = timezone('America/Los_Angeles')
 
@@ -72,7 +73,7 @@ _HO = f'project = NOC AND type = Story AND summary ~ "NOC Handover" AND status !
 _CR = f'project = NOC AND type = "Change Record" AND created > "-24h" {_DEF_SORT}'
 _P1 = f'project = NOC AND {_TYPES} AND priority = 1 AND created > "-36h" {_DEF_SORT}'
 _OPEN_ISSUES = f'project = NOC AND {_TYPES} AND status != Closed ORDER by priority DESC, key DESC'
-_SUBTASKS = f'project = NOC AND issuetype = sub-task AND status != Done'
+_SUBTASKS = 'project = NOC AND issuetype = sub-task AND status != Done ORDER by due ASC'
 
 
 # Formats used by line titles
