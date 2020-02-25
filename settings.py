@@ -34,8 +34,9 @@ class Intervals:
 class NOCStatSettings:
     SIGN_SECRET = os.environ['SLACK_SIGN_SECRET'].encode()  # MUST BE ASCII ¯\_(ツ)_/¯
     AUTHORIZED_USERS = [
-        'josh.martinez', 'barry.mayo', 'chris.bosman', 'chris.andrews',
-        'derek.gaska', 'rosalba.vergara', 'anthony.vaccaro', 'zachary.thacker']
+        'josh.martinez', 'barry.mayo', 'chris.bosman', 'chris.andrews', 'derek.gaska',
+        'rosalba.vergara', 'anthony.vaccaro', 'zachary.thacker', 'minuk.kim']
+
     SELECTIONS = [
         {
             "text": "Pending Issue Tasks",
