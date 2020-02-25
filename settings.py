@@ -2,7 +2,7 @@ from pytz import timezone
 import os
 
 
-DEBUG = True  # "True" uses NP jira project and DEV slack whook
+DEBUG = False  # "True" uses NP jira project and DEV slack whook
 
 TZ = timezone('America/Los_Angeles')
 
@@ -37,24 +37,28 @@ class NOCStatSettings:
         'derek.gaska', 'rosalba.vergara', 'anthony.vaccaro', 'zachary.thacker']
     SELECTIONS = [
         {
-            "text": "Open NOC Channels",
-            "value": "open_channs"
-        },
-        {
-            "text": "Archived NOC Channels",
-            "value": "archived_channs"
+            "text": "Pending Issue Tasks",
+            "value": "incident_subtasks"
         },
         {
             "text": "Followup Issues",
             "value": "followup_issues"
         },
         {
-            "text": "Open Issues",
+            "text": "All Open Issues",
             "value": "outstanding_incidents"
         },
         {
-            "text": "Handover On-demand",
+            "text": "Full Handover",
             "value": "full_ho"
+        },
+        {
+            "text": "Open NOC Channels",
+            "value": "open_channs"
+        },
+        {
+            "text": "Archived NOC Channels",
+            "value": "archived_channs"
         },
     ]
 
@@ -137,7 +141,7 @@ COMPONENTS = {
         "kwargs": {
             "heading": "Issues that need to be followed up on",
             "query": _OPEN_ISSUES,
-            "message_if_none": "No pressing issues to follow up on. Good job!",
+            "message_if_none": "No issues need to be followed up on right now.",
             "line_fmt": _LONG_FMT,
             "show_count": True,
             "only_followup": True,

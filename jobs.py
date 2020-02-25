@@ -67,10 +67,11 @@ def standup_reminder():
 
 
 def followup_reminder():
-    HEADING = f'@here\n*Heads up team! Show the following issues some love:*\n\n'
-    followup_section = sections.get_followup_section()
-    if not followup_reminder:
+    HEADING = f'@here\nHeads up team!\n\n'
+    section = sections.get_sections(name='followup_issues')[0]
+
+    if not section.line_items:  # If there's nothing to follow up on, do nothing
         return
 
-    msg = HEADING + followup_section.get_section(for_slack=True)
+    msg = HEADING + section.get_section(for_slack=True)
     slack_interface.send_msg(msg)
