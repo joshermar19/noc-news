@@ -2,7 +2,7 @@ from pytz import timezone
 import os
 
 
-DEBUG = False  # "True" uses NP jira project and DEV slack whook
+DEBUG = True  # "True" uses NP jira project and DEV slack whook
 
 TZ = timezone('America/Los_Angeles')
 
@@ -68,11 +68,13 @@ _HO = f'project = NOC AND type = Story AND summary ~ "NOC Handover" AND status !
 _CR = f'project = NOC AND type = "Change Record" AND created > "-24h" {_DEF_SORT}'
 _P1 = f'project = NOC AND {_TYPES} AND priority = 1 AND created > "-36h" {_DEF_SORT}'
 _OPEN_ISSUES = f'project = NOC AND {_TYPES} AND status != Closed ORDER by priority DESC, key DESC'
+_SUBTASKS = f'project = NOC AND issuetype = sub-task AND status != Done'
 
 
 # Formats used by line titles
 _SHORT_FMT = '*{key} — Created: {created}*'
 _LONG_FMT = '*{key} — P{priority} — Last update: {updated}*'
+_SUBT_FMT = '*{key} — Parent: {parent_key} — Due: {due}*'
 
 
 COMPONENTS = {
@@ -113,6 +115,15 @@ COMPONENTS = {
             "show_count": True,
         }
     },
+    "incident_subtasks": {
+        "from_jira": True,
+        "kwargs": {
+            "heading": "Pending Sub-tasks",
+            "query": _SUBTASKS,
+            "message_if_none": "No pending sub-tasks.",
+            "line_fmt": _SUBT_FMT,
+        }
+    },
     "open_channs": {
         "from_jira": False,
         "kwargs": {
@@ -138,7 +149,6 @@ COMPONENTS = {
             "heading": "Archived NOC Channels",
             "line_fmt": _SHORT_FMT,
             "archived": True,
-            "show_count": False,
         }
     }
 }
@@ -149,5 +159,6 @@ HO_COMPONENTS = [
     COMPONENTS["recent_cr_issues"],
     COMPONENTS["recent_outages"],
     COMPONENTS["outstanding_incidents"],
+    COMPONENTS["incident_subtasks"],
     COMPONENTS["open_channs"]
 ]
