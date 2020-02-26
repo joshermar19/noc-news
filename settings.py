@@ -51,7 +51,7 @@ class NOCStatSettings:
             "value": "followup_issues"
         },
         {
-            "text": "Pending Issue Tasks",
+            "text": "Pending Issue Sub-Tasks",
             "value": "incident_subtasks"
         },
 
