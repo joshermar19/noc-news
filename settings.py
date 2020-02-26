@@ -52,8 +52,8 @@ class NOCStatSettings:
         },
 
         {
-            "text": "All P1 Incidents",
-            "value": "all_p1"
+            "text": "Recent P1 Incidents",
+            "value": "recent_p1s"
         },
         {
             "text": "NOC Action Items",
@@ -86,7 +86,7 @@ _P1 = f'project = NOC AND {_TYPES} AND priority = 1 AND created > "-36h"'
 _OPEN_ISSUES = f'project = NOC AND {_TYPES} AND status != Closed ORDER by priority DESC, key DESC'
 _SUBTASKS = 'project = NOC AND issuetype = sub-task AND status != Done ORDER by due ASC'
 _ACCITEMS = 'project = NOC AND issuetype = "NOC Action Item" AND status != Done ORDER by due ASC'
-_ALL_P1 = f'project = NOC AND {_TYPES} AND priority = 1'
+_RECENT_P1S = f'project = NOC AND {_TYPES} AND priority = 1'
 
 
 # Commmon formats
@@ -186,11 +186,11 @@ COMPONENTS = {
             "archived": True,
         }
     },
-    "all_p1": {
+    "recent_p1s": {
         "from_jira": True,
         "kwargs": {
-            "heading": "All P1 Incidents",
-            "query": _ALL_P1,
+            "heading": "Recent P1 Incidents",
+            "query": _RECENT_P1S,
             "message_if_none": "This should not be empty!",
             "line_fmt": _SHORT_FMT,
         }
