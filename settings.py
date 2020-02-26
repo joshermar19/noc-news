@@ -39,6 +39,10 @@ class NOCStatSettings:
 
     SELECTIONS = [
         {
+            "text": "Full Handover",
+            "value": "full_ho"
+        },
+        {
             "text": "All Open Issues (P2-P5)",
             "value": "outstanding_incidents"
         },
@@ -58,10 +62,6 @@ class NOCStatSettings:
         {
             "text": "NOC Action Items",
             "value": "action_items"
-        },
-        {
-            "text": "Full Handover",
-            "value": "full_ho"
         },
         {
             "text": "Open NOC Channels",
