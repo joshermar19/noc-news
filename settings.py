@@ -43,24 +43,23 @@ class NOCStatSettings:
             "value": "full_ho"
         },
         {
-            "text": "All Open Issues (P2-P5)",
+            "text": "Open Issues (P2-P5)",
             "value": "outstanding_incidents"
         },
         {
-            "text": "Issues to follow up on (per SLAs)",
+            "text": "Follow-up Issues (per SLAs)",
             "value": "followup_issues"
         },
         {
-            "text": "Pending Issue Subtasks",
+            "text": "Issue Subtasks",
             "value": "incident_subtasks"
         },
-
         {
-            "text": "Recent P1 Incidents",
+            "text": "Recent Outages",
             "value": "recent_p1s"
         },
         {
-            "text": "NOC Action Items",
+            "text": "Outage Action Items",
             "value": "action_items"
         },
         {
@@ -71,7 +70,6 @@ class NOCStatSettings:
             "text": "Archived NOC Channels",
             "value": "archived_channs"
         },
-
     ]
 
 
@@ -139,7 +137,7 @@ COMPONENTS = {
     "incident_subtasks": {
         "from_jira": True,
         "kwargs": {
-            "heading": "Pending Sub-tasks",
+            "heading": "Issue Subtasks",
             "query": _SUBTASKS,
             "message_if_none": "No pending sub-tasks.",
             "line_fmt": _SUBT_FMT,
@@ -158,7 +156,7 @@ COMPONENTS = {
     "followup_issues": {
         "from_jira": True,
         "kwargs": {
-            "heading": "Issues that need to be followed up on",
+            "heading": "Issues to follow up on",
             "query": _OPEN_ISSUES,
             "message_if_none": "No issues need to be followed up on right now.",
             "line_fmt": _LONG_FMT,
@@ -172,7 +170,7 @@ COMPONENTS = {
     "action_items": {
         "from_jira": True,
         "kwargs": {
-            "heading": "NOC Action Items",
+            "heading": "Outage Action Items",
             "query": _ACCITEMS,
             "message_if_none": "No action items found.",
             "line_fmt": _ACCITEMS_FMT,
@@ -189,7 +187,7 @@ COMPONENTS = {
     "recent_p1s": {
         "from_jira": True,
         "kwargs": {
-            "heading": "Recent P1 Incidents",
+            "heading": "Recent Outages",
             "query": _RECENT_P1S,
             "message_if_none": "This should not be empty!",
             "line_fmt": _SHORT_FMT,
